@@ -1395,6 +1395,7 @@ const Matrix & SFI_MVLEM::getTangentStiff(void)
 {   
 	
 	double Kh=0.0;
+	SFI_MVLEMK.Zero();
 	
 	for (int i=0; i < m; i++)
 	{
