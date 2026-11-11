@@ -888,14 +888,104 @@ int FSAM::revertToStart(void)
 {
 
 	// revert all uniaxial materials to start
-	for (int i=0; i < 8; i++) {
-		theMaterial[i]->revertToStart();
+	if (theMaterial != 0) {
+		for (int i=0; i < 8; i++) {
+			if (theMaterial[i] != 0)
+				theMaterial[i]->revertToStart();
+		}
 	}
 
 	// set stress, strain and tangent to zero
 	strain_vec.Zero();
 	stress_vec.Zero();
 	tangent_matrix.Zero();
+
+	// Reset the panel state to the initial (uncracked) values, as in the
+	// constructor. Previously only the uniaxial materials were reverted, so
+	// cracks, strut angles and damage survived a revertToStart (e.g. reset).
+
+	// Principal strains
+	Tprstrain1 = 0.0;
+	Tprstrain2 = 0.0;
+	Cprstrain1 = 0.0;
+	Cprstrain2 = 0.0;
+
+	// Strut orientation
+	alpha_strain = 10.0;
+	alfa_crackA = 10.0;
+	alfa_crackB = 10.0;
+
+	// State variables
+	crackA = 0;
+	crackB = 0;
+
+	// Softening parameters
+	beta = 0.0;
+	delbeta = 0.0;
+	epsiloncmax = 0.0;
+
+	Tepscmax1 = 0.0;
+	Tepscmax2 = 0.0;
+	Cepscmax1 = 0.0;
+	Cepscmax2 = 0.0;
+
+	TepscmaxA1 = 0.0;
+	TepscmaxA2 = 0.0;
+	CepscmaxA1 = 0.0;
+	CepscmaxA2 = 0.0;
+
+	TepscmaxB1 = 0.0;
+	TepscmaxB2 = 0.0;
+	CepscmaxB1 = 0.0;
+	CepscmaxB2 = 0.0;
+
+	// Shear aggregate interlock
+	Tau_Interlock = 0.0;
+	dTau_de12 = 0.0;
+	dTau_dfcnormal = 0.0;
+
+	TeA12 = 0.0;
+	CeA12 = 0.0;
+	TeB12 = 0.0;
+	CeB12 = 0.0;
+
+	Ctau_Interlock_A = 0.0;
+	Ttau_Interlock_A = 0.0;
+	Ctau_Interlock_B = 0.0;
+	Ttau_Interlock_B = 0.0;
+
+	// 2nd cracking criterium
+	TepsA2 = 0.0;
+	CepsA2 = 0.0;
+
+	// Dowel action
+	Tau_Dowel = 0.0;
+	dTau_dgamma = 0.0;
+
+	// Committed stress and strain
+	CStress.Zero();
+	CStrain.Zero();
+
+	// Recorder variables
+	TPanelConcStress.Zero();
+	TPanelSteelStress.Zero();
+	CPanelConcStress.Zero();
+	CPanelSteelStress.Zero();
+
+	TStrainStressSteel1.Zero();
+	TStrainStressSteel2.Zero();
+	TStrainStressConc1.Zero();
+	TStrainStressConc2.Zero();
+	TStrainStressInterlock1.Zero();
+	TStrainStressInterlock2.Zero();
+
+	CStrainStressSteel1.Zero();
+	CStrainStressSteel2.Zero();
+	CStrainStressConc1.Zero();
+	CStrainStressConc2.Zero();
+	CStrainStressInterlock1.Zero();
+	CStrainStressInterlock2.Zero();
+	CCrackingAngles.Zero();
 
 	return 0;
 }
