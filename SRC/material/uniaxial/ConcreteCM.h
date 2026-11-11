@@ -90,152 +90,155 @@ protected:
 
 private:
 
+	// All data members are zero-initialized here so that no constructor
+	// (e.g. ConcreteCM(int tag), used by getCopy) leaves them undefined.
+
 	// Input parameters
-	double fpcc;	// peak compressive stress
-	double epcc;	// strain at peak compressive stress	
-	double Ec;		// Young's modulus
-	double rc;		// shape parameter in compression
-	double xcrn;	// cracking strain in compression
-	double ft;		// peak tensile stress
-	double et;		// strain at peak tensile stress
-	double rt;		// shape parameter in tension
-	double xcrp;	// cracking strain in tension
-	int mon;		// switch for monotonic vs. cyclic (internal)
-	int Gap;		// switch for more versus less gradual gap closure
-	int dummy;		// dummy input variable
+	double fpcc = 0.0;	// peak compressive stress
+	double epcc = 0.0;	// strain at peak compressive stress	
+	double Ec = 0.0;		// Young's modulus
+	double rc = 0.0;		// shape parameter in compression
+	double xcrn = 0.0;	// cracking strain in compression
+	double ft = 0.0;		// peak tensile stress
+	double et = 0.0;		// strain at peak tensile stress
+	double rt = 0.0;		// shape parameter in tension
+	double xcrp = 0.0;	// cracking strain in tension
+	int mon = 0;		// switch for monotonic vs. cyclic (internal)
+	int Gap = 0;		// switch for more versus less gradual gap closure
+	int dummy = 0;		// dummy input variable
 
 	// CONVERGED history variables
-	double Ceunn;
-	double Cfunn;
-	double Ceunp;
-	double Cfunp;
-	double Cer;
-	double Cfr;
-	double Cer0n;
-	double Cfr0n;
-	double Cer0p;
-	double Cfr0p;
-	double Ce0;
-	double Cea;
-	double Ceb;
-	double Ced;
-	double Cinc;
-	double Crule;
+	double Ceunn = 0.0;
+	double Cfunn = 0.0;
+	double Ceunp = 0.0;
+	double Cfunp = 0.0;
+	double Cer = 0.0;
+	double Cfr = 0.0;
+	double Cer0n = 0.0;
+	double Cfr0n = 0.0;
+	double Cer0p = 0.0;
+	double Cfr0p = 0.0;
+	double Ce0 = 0.0;
+	double Cea = 0.0;
+	double Ceb = 0.0;
+	double Ced = 0.0;
+	double Cinc = 0.0;
+	double Crule = 0.0;
 
 	// CONVERGED State Variables
-	double Cstrain;
-	double Cstress;   
-	double Ctangent;	// Don't need Ctangent other than for revert and sendSelf/recvSelf
+	double Cstrain = 0.0;
+	double Cstress = 0.0;   
+	double Ctangent = 0.0;	// Don't need Ctangent other than for revert and sendSelf/recvSelf
 
 	// TRIAL history variables
-	double Teunn;
-	double Tfunn;
-	double Teunp;
-	double Tfunp;
-	double Ter;
-	double Tfr;
-	double Ter0n;
-	double Tfr0n;
-	double Ter0p;
-	double Tfr0p;
-	double Te0;
-	double Tea;
-	double Teb;
-	double Ted;
-	double Tinc;
-	double Trule;
+	double Teunn = 0.0;
+	double Tfunn = 0.0;
+	double Teunp = 0.0;
+	double Tfunp = 0.0;
+	double Ter = 0.0;
+	double Tfr = 0.0;
+	double Ter0n = 0.0;
+	double Tfr0n = 0.0;
+	double Ter0p = 0.0;
+	double Tfr0p = 0.0;
+	double Te0 = 0.0;
+	double Tea = 0.0;
+	double Teb = 0.0;
+	double Ted = 0.0;
+	double Tinc = 0.0;
+	double Trule = 0.0;
 
 	// TRIAL state variables
-	double Tstrain;
-	double Tstress;   
-	double Ttangent;
+	double Tstrain = 0.0;
+	double Tstress = 0.0;   
+	double Ttangent = 0.0;
 
 	// Other variables
-	double xn;
-	double nn;
-	double xsp;
-	double xp;
-	double np;
-	double xcrk;
-	double y;
-	double z;
+	double xn = 0.0;
+	double nn = 0.0;
+	double xsp = 0.0;
+	double xp = 0.0;
+	double np = 0.0;
+	double xcrk = 0.0;
+	double y = 0.0;
+	double z = 0.0;
 
-	double eunn;
-	double funn;
-	double espln;
-	double Epln;
-	double Esecn;
-	double Esectest;
-	double Esectest10; //KK
-	double Esectest13; //KK
-	double delen;
-	double delfn;
-	double fnewn;
-	double Enewn;
-	double esren;
-	double fren;
-	double Eren;
-	double fnewstn;
-	double Enewstn;
-	double esrestn;
-	double frestn;
-	double Erestn;
+	double eunn = 0.0;
+	double funn = 0.0;
+	double espln = 0.0;
+	double Epln = 0.0;
+	double Esecn = 0.0;
+	double Esectest = 0.0;
+	double Esectest10 = 0.0; //KK
+	double Esectest13 = 0.0; //KK
+	double delen = 0.0;
+	double delfn = 0.0;
+	double fnewn = 0.0;
+	double Enewn = 0.0;
+	double esren = 0.0;
+	double fren = 0.0;
+	double Eren = 0.0;
+	double fnewstn = 0.0;
+	double Enewstn = 0.0;
+	double esrestn = 0.0;
+	double frestn = 0.0;
+	double Erestn = 0.0;
 
-	double eunp;
-	double funp;
-	double esplp;
-	double Eplp;
-	double Esecp;
-	double delep;
-	double delfp;
-	double fnewp;
-	double Enewp;
-	double esrep;
-	double frep;
-	double Erep;
-	double fnewstp;
-	double Enewstp;
-	double esrestp;
-	double frestp;
-	double Erestp;
+	double eunp = 0.0;
+	double funp = 0.0;
+	double esplp = 0.0;
+	double Eplp = 0.0;
+	double Esecp = 0.0;
+	double delep = 0.0;
+	double delfp = 0.0;
+	double fnewp = 0.0;
+	double Enewp = 0.0;
+	double esrep = 0.0;
+	double frep = 0.0;
+	double Erep = 0.0;
+	double fnewstp = 0.0;
+	double Enewstp = 0.0;
+	double esrestp = 0.0;
+	double frestp = 0.0;
+	double Erestp = 0.0;
 
-	double esi;
-	double esi10; //KK
-	double esi13; //KK
-	double fi; 
-	double fi10; //KK
-	double fi13; //KK
-	double Ei;
-	double Ei10; //KK
-	double Ei13; //KK
-	double esf;
-	double esf10; //KK
-	double esf13; //KK
-	double ff;
-	double ff10; //KK
-	double ff13; //KK
-	double Ef;
-	double Ef10; //KK
-	double Ef13; //KK
+	double esi = 0.0;
+	double esi10 = 0.0; //KK
+	double esi13 = 0.0; //KK
+	double fi = 0.0; 
+	double fi10 = 0.0; //KK
+	double fi13 = 0.0; //KK
+	double Ei = 0.0;
+	double Ei10 = 0.0; //KK
+	double Ei13 = 0.0; //KK
+	double esf = 0.0;
+	double esf10 = 0.0; //KK
+	double esf13 = 0.0; //KK
+	double ff = 0.0;
+	double ff10 = 0.0; //KK
+	double ff13 = 0.0; //KK
+	double Ef = 0.0;
+	double Ef10 = 0.0; //KK
+	double Ef13 = 0.0; //KK
 
-	double R;
-	double R10; //KK
-	double R13; //KK
-	double A;
-	double A10; //KK
-	double A13; //KK
+	double R = 0.0;
+	double R10 = 0.0; //KK
+	double R13 = 0.0; //KK
+	double A = 0.0;
+	double A10 = 0.0; //KK
+	double A13 = 0.0; //KK
 
-	double fc;
-	double Et;
+	double fc = 0.0;
+	double Et = 0.0;
 
-	double fca;
-	double Eta;
+	double fca = 0.0;
+	double Eta = 0.0;
 
-	double fcb;
-	double Etb;
+	double fcb = 0.0;
+	double Etb = 0.0;
 
-	double fa;
-	double fb;
+	double fa = 0.0;
+	double fb = 0.0;
 
 	// Member functions
 	void fcEtnf(double e);

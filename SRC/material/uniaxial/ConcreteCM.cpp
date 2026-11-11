@@ -820,6 +820,9 @@ int ConcreteCM::setTrialStrain (double strain, double strainRate)
 
 								fcEturf(Tea,esi,fi,esf,ff,Ei,Ef,A,R);
 
+								fca=fc; // fix: fca/Eta were used below without being assigned (cf. fcb/Etb in the r77f branch)
+								Eta=Et;
+
 								esi=Ter;
 								fi=Tfr;
 								Ei=Ec;
@@ -3329,6 +3332,9 @@ int ConcreteCM::setTrialStrain (double strain, double strainRate)
 
 								fcEturf(Tea,esi,fi,esf,ff,Ei,Ef,A,R);
 
+								fca=fc; // fix: fca/Eta were used below without being assigned (cf. fcb/Etb in the r77f branch)
+								Eta=Et;
+
 								esi=Ter;
 								fi=Tfr;
 								Ei=Ec;
@@ -4259,6 +4265,9 @@ int ConcreteCM::setTrialStrain (double strain, double strainRate)
 		theCopy->Cstrain = Cstrain;
 		theCopy->Cstress = Cstress;
 		theCopy->Ctangent = Ctangent;
+
+		// Set trial variables equal to the copied committed state
+		theCopy->revertToLastCommit();
 
 		return theCopy;
 	}
